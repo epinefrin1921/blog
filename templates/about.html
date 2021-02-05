@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content%}
+       <div class="container mt-5 mb-5">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">About this project</h1>
+            <p class="lead">This project is used to practice Django Framework. This is a simple blog application that combines Bootstrap and Django for fast development </p>
+          </div>
+        </div>
+           <div class="container mt-5">
+
+        <div class="row">
+
+            <div class="card text-center col-md-4 ms-2 me-2" style="width: 18rem;">
+              <img src="https://p.kindpng.com/picc/s/485-4850258_bootstrap-logo-png-image-free-download-searchpng-logos.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Frontend</h5>
+                <p class="card-text">This project frontend was built using Bootstrap.</p>
+                <a href="https://getbootstrap.com/" class="btn btn-primary">Bootstrap</a>
+              </div>
+            </div>
+
+            <div class="card text-center col-md-4 ms-2 me-2" style="width: 18rem;">
+              <img src="https://avatars2.githubusercontent.com/u/27804?s=280&v=4" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Backend</h5>
+                <p class="card-text">Django was used for backend part.</p>
+                <a href="https://www.djangoproject.com/" class="btn btn-primary">Django</a>
+              </div>
+            </div>
+
+            <div class="card text-center col-md-4 ms-2 me-2" style="width: 18rem;">
+                <img src="http://pngimg.com/uploads/mysql/mysql_PNG10.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Databases</h5>
+                    <p class="card-text">SQLite was used as default Django's database</p>
+                    <a href="https://www.sqlite.org/index.html" class="btn btn-primary">SQLite</a>
+                </div>
+             </div>
+        </div>
+           </div>
+       </div>
+
+{% endblock %}

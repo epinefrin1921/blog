@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+
+{% block content%}
+
+    <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+
+        <!-- Title -->
+        <h1 class="mt-4">{{ obj.title }}</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#">{{ obj.posted_by }}</a>
+            {% if user.is_authenticated and user.is_superuser %}
+            <a class="btn btn-danger" href="./delete">Delete</a>
+                <a class="btn btn-primary" href="./update">Update</a>
+            {% endif %}
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p>Posted on {{ obj.posted_on }} </p>
+
+        <hr>
+
+        <!-- Preview Image -->
+        <img class="img-fluid rounded"  src="{{ obj.img.url }}" alt="">
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead">
+            {{ obj.desc }}
+        </p>
+
+
+        <hr>
+
+        <!-- Comments Form -->
+      {% if user.is_authenticated %}
+        <div class="card my-4">
+          <h5 class="card-header">Leave a Comment:</h5>
+          <div class="card-body">
+            <form action="./comment" method="POST">
+                {% csrf_token %}
+              <div class="form-group">
+                <input type="text" class="form-control" name="comment" placeholder="Input comment here">
+              </div>
+              <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            </form>
+          </div>
+        </div>
+      {%  endif %}
+
+        <!-- Single Comment -->
+        {% for comment in comments %}
+
+        <div class="media mb-4 mt-5">
+          <div class="media-body">
+            <h5 class="mt-0">{{ comment.posted_by }} commented: </h5>
+              {{ comment.text }}- <span style="font-size: 12px"> {{ comment.get_time_difference }} hours ago </span>
+          </div>
+        </div>
+            <hr>
+
+        {% endfor %}
+
+
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+          {% if not user.is_authenticated %}
+             <div class="card my-4">
+          <h5 class="card-header">Login or Register to leave a comment</h5>
+          <div class="card-body">
+            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+          </div>
+        </div>
+            {% endif %}
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+
+{% endblock %}

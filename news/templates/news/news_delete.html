@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content%}
+    <div class="album py-5 bg-light">
+    <div class="container">
+        <h3>Do you really want to delete this? </h3>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
+            <div class="col">
+
+              <div class="card shadow-sm">
+                <img src="{{ obj.img.url }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ obj.title }}</h5>
+                  <p class="card-text">{{ obj.desc }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+                <div class="mt-3">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <p><input class="btn btn-danger" type="submit" value="Yes"> <a class="btn btn-success" href="/news/{{ obj.id }}">Cancel</a></p>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+{% endblock %}
