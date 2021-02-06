@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -35,6 +36,7 @@ def register(request):
         return render(request, 'accounts/register.html')
 
 
+@csrf_exempt
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -50,6 +52,7 @@ def login(request):
 
     else:
         return render(request, 'accounts/login.html')
+
 
 @login_required
 def logout(request):

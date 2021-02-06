@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name = 'news'
@@ -9,5 +9,5 @@ urlpatterns = [
     path('<int:id>/update', views.update_news, name='contact'),
     path('<int:id>/delete', views.delete_news, name='contact'),
     path('<int:id>/comment', views.add_comment_news, name='comment'),
-
+    path('api/', include('news.api_news_urls')),
 ]

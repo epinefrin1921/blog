@@ -27,6 +27,20 @@ class Blog(models.Model):
 
         return time_difference
 
+    def as_dict(self):
+        comments = Comment.objects.filter(blog=self).order_by('posted_on').reverse()
+        comments_list = []
+        for obj in comments:
+            comments_list.append(obj.as_dict_for_news())
+        return {
+            "id": self.id,
+            "postedOn": self.posted_on,
+            "author": self.posted_by.username,
+            "title": self.title,
+            "text": self.desc,
+            "comments": comments_list
+        }
+
 
 class Comment(models.Model):
     text = models.CharField(max_length=1000)
@@ -41,3 +55,20 @@ class Comment(models.Model):
         time_difference = end_time - start_time
 
         return time_difference
+
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "postedOn": self.posted_on,
+            "author": self.posted_by.username,
+            "text": self.text,
+            "blog": self.blog.as_dict()
+        }
+
+    def as_dict_for_news(self):
+        return {
+            "id": self.id,
+            "postedOn": self.posted_on,
+            "author": self.posted_by.username,
+            "text": self.text
+        }
