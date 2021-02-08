@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
-
-
 {% block content%}
   <div class="album py-5 bg-light">
     <div class="container">
     <h3>Newest blogs: </h3>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
     {% for obj in news %}
-
             <div class="col">
               <div class="card shadow-sm">
                 <img src="{{ obj.img.url }}">
@@ -23,7 +20,6 @@
                 </div>
               </div>
             </div>
-
     {% endfor %}
         </div>
     {% if user.is_authenticated and user.is_superuser %}

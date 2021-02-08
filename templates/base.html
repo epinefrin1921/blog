@@ -15,7 +15,6 @@
             -moz-user-select: none;
             user-select: none;
           }
-
           @media (min-width: 768px) {
             .bd-placeholder-img-lg {
               font-size: 3.5rem;
@@ -23,17 +22,12 @@
           }
     </style>
         <link href="{% static 'styles/product.css' %}" rel="stylesheet">
-
 </head>
 <body>
     {% include 'navbar.html' %}
-
     {% block content%}
-
     {% endblock %}
-
     {% include 'footer.html' %}
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 </html>
